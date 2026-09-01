@@ -552,7 +552,7 @@ function App() {
 
           {step === 'ai' && (
             <div className="panel">
-              <PanelHeading number="01" title="Write the memory called persona." text={`This becomes ${memoryPath('persona')}: the AI’s durable centre of gravity, present on every turn.`} />
+              <PanelHeading number="01" title="Start with who they are." text="Give your AI a name, identity, and voice—the qualities that should stay recognisable in every conversation." />
               <div className="field-grid core-fields">
                 <Field compact label="Name" hint="What should they call themselves?" value={draft.agentName} onChange={(v) => setField('agentName', v)} placeholder="e.g. Rowan" />
                 <Field label="Identity" hint="Background, role, sense of self, and what makes them recognisable." value={draft.identity} onChange={(v) => setField('identity', v)} placeholder="They are…" />
@@ -573,7 +573,7 @@ function App() {
 
           {step === 'human' && (
             <div className="panel">
-              <PanelHeading number="02" title="Write the memory called human." text={`This becomes ${memoryPath('human')}: durable context about the person, not a flattened preferences card.`} />
+              <PanelHeading number="02" title="Help them understand you." text="Share who you are, what matters to you, and anything they should remember when talking or working with you." />
               <div className="field-grid core-fields">
                 <Field compact label="Human name" hint="The name the agent should know." value={draft.humanName} onChange={(v) => setField('humanName', v)} placeholder="e.g. Alex" />
                 <Field label="Context" hint="Life, work, motivations, accessibility, and durable circumstances." value={draft.humanContext} onChange={(v) => setField('humanContext', v)} placeholder="Alex is building…" />
