@@ -444,11 +444,13 @@ function App() {
       </header>
 
       <section className="hero" id="top">
-        <p className="kicker">Memory-first setup for persistent AI</p>
-        <h1>Give them a past<br /><span>worth continuing.</span></h1>
+        <p className="kicker">Simplified setup for persistent AI</p>
+        <h1>Create a Letta agent<br />with memory from the start</h1>
         <p className="lede">
-          Shape the three memories that matter first: who they are, who you are, and how you
-          work together. Review every word before a Letta agent is created.
+          Continuity Studio guides you through identity, information about you, and how you work
+          together. It turns your answers into three readable memory files for you to review, then
+          creates the agent in your own Letta account. Bring existing conversation history and
+          memories with you—for continuity between models and providers.
         </p>
       </section>
 
@@ -491,8 +493,10 @@ function App() {
               <div className="connect-card connect-first">
                 <div className="connect-copy">
                   <span>Required connection</span>
-                  <strong>Your Letta account</strong>
-                  <p>Your API key and reviewed memory payload pass through the Continuity Studio server to Letta for this request. The server does not persist them.</p>
+                  <strong>Your Letta account and usage</strong>
+                  <p>Continuity Studio uses your own Letta API key to create the agent in your Letta Cloud account. Letta Auto is selected by default, and you can change the model later in Letta. Ongoing model usage is charged or deducted by Letta according to your account, including any allowance available on your plan—not by Continuity Studio.</p>
+                  <p>Your API key and reviewed memory or history files pass through the Continuity Studio server only for the Letta operations you request. Continuity Studio does not persist them.</p>
+                  <p>Continuity Studio does not charge for creating an agent. Your normal Letta plan limits and usage costs still apply. <a href="https://docs.letta.com/pricing/index.md" target="_blank" rel="noreferrer">View current Letta pricing</a>.</p>
                 </div>
                 <form className="key-control" onSubmit={(event) => { event.preventDefault(); void verifyLetta() }}>
                   <input
@@ -535,12 +539,12 @@ function App() {
               <div className="inspection-card">
                 <div>
                   <span>Careful by design</span>
-                  <strong>Let your AI inspect the real source first.</strong>
-                  <p>The package contains the application code, dependency lockfile, architecture and inspection notes, plus SHA-256 hashes for every included file. It contains no credentials, dependencies, build output, or local tool state.</p>
+                  <strong>Inspect the source on GitHub.</strong>
+                  <p>Review the application code, dependency lockfile, architecture, security model, and licensing before connecting your Letta account.</p>
                 </div>
                 <div className="inspection-actions">
-                  <a href="/downloads/continuity-studio-source.zip" download>Download source ZIP</a>
-                  <a href="/downloads/continuity-studio-source.zip.sha256" download>Download ZIP checksum</a>
+                  <a href="https://github.com/martusha89/continuity-studio" target="_blank" rel="noreferrer">View source on GitHub</a>
+                  <a href="https://github.com/martusha89/continuity-studio/blob/main/docs/ai-inspection-guide.md" target="_blank" rel="noreferrer">Read the inspection guide</a>
                 </div>
               </div>
             </div>
