@@ -76,6 +76,7 @@ function App() {
   const [memoryEdits, setMemoryEdits] = useState<MemoryEdits>({})
   const [reviewedLabel, setReviewedLabel] = useState('persona')
   const [step, setStep] = useState<StudioStep>('ai')
+  const [studioStarted, setStudioStarted] = useState(false)
   const [copied, setCopied] = useState(false)
   const [apiKey, setApiKey] = useState('')
   const [connection, setConnection] = useState<'idle' | 'checking' | 'connected' | 'error'>('idle')
@@ -122,6 +123,16 @@ function App() {
   const oversizedRenderedFiles = historyPreview?.files.filter((file) => utf8Bytes(file.content) > MAX_HISTORY_FILE_BYTES).length ?? 0
   const currentIndex = steps.findIndex((item) => item.id === step)
   const operationActive = connection === 'checking' || creation === 'creating' || historyImport === 'importing'
+
+  const enterStudio = () => {
+    setStudioStarted(true)
+    window.requestAnimationFrame(() => document.getElementById('studio')?.scrollIntoView({ block: 'start' }))
+  }
+
+  const showIntroduction = () => {
+    setStudioStarted(false)
+    window.requestAnimationFrame(() => document.getElementById('top')?.scrollIntoView({ block: 'start' }))
+  }
 
   const beginOperation = () => {
     if (operationLock.current) return null
@@ -431,9 +442,9 @@ function App() {
   }
 
   return (
-    <main className="shell">
+    <main className={studioStarted ? 'shell studio-mode' : 'shell'}>
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="Continuity Studio home">
+        <a className="brand" href="#top" aria-label="Continuity Studio home" onClick={(event) => { event.preventDefault(); showIntroduction() }}>
           <span className="brand-mark">C</span>
           <span>Continuity Studio</span>
         </a>
@@ -452,9 +463,10 @@ function App() {
           creates the agent in your own Letta account. Bring existing conversation history and
           memories with you—for continuity between models and providers.
         </p>
+        <button type="button" className="start-button" onClick={enterStudio}>Start creating</button>
       </section>
 
-      <section className="studio">
+      <section className="studio" id="studio" aria-label="Continuity Studio setup">
         <nav className="stepper" aria-label="Onboarding sections">
           {steps.map((item) => {
             const completion = completionForStep(item.id, draft)
